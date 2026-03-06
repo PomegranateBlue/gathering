@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install --save-dev @types/three)",
+      "Bash(node -e \"const r = require\\(''./node_modules/@react-three/fiber/package.json''\\); console.log\\(r.version, r.exports?.[''.'']?.types || r.types || r.typings || ''none''\\)\")",
+      "Bash(node -e \"const r = require\\(''./node_modules/@react-three/fiber/package.json''\\); console.log\\(JSON.stringify\\(Object.keys\\(r.exports || {}\\), null, 2\\)\\)\")"
+    ]
+  }
+}

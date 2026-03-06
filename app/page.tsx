@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect, useReducer, useCallback } from "react";
-import { useThreeScene } from "./hooks/useThreeScene";
+import { GameCanvas } from "./components/GameCanvas";
 import { goalsReducer } from "./reducers/goalsReducer";
 import { GoalModal } from "./components/GoalModal";
 import { styles } from "./styles";
 
 export default function CultGame() {
-  const { canvasRef, isNearObject } = useThreeScene();
   const [goals, dispatch] = useReducer(goalsReducer, []);
   const [showModal, setShowModal] = useState(false);
+  const [isNearObject, setIsNearObject] = useState(false);
 
   const handleSpacebar = useCallback(
     (e: KeyboardEvent) => {
@@ -49,7 +49,7 @@ export default function CultGame() {
         <span style={styles.controlsText}>↑ ↓ ← → 이동</span>
       </div>
 
-      <div ref={canvasRef} style={styles.canvas} />
+      <GameCanvas onNearChange={setIsNearObject} />
 
       {showModal && (
         <GoalModal
